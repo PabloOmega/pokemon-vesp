@@ -1,0 +1,35 @@
+
+<div class="container-fluid text-center">
+    <button type="button" class="btn btn-primary" (click)="onClickButton()">Imprimir Mensaje</button>
+    <table class="table table-striped-columns table-hover">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Peso</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Imagen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr 
+                *ngFor="let pokemon of pokemons" 
+                style="cursor: pointer;"
+                (click)="onClickPokemon(pokemon)"
+                >
+                <th scope="row">{{pokemon.id}}</th>
+                <td>{{pokemon.nombre}}</td>
+                <td>{{pokemon.peso}}</td>
+                <td>{{pokemon.tipo}}</td>
+                <td>
+                    <img 
+                        [src]="pokemon.imagen" 
+                        class="figure-img img-fluid rounded" 
+                        [alt]="pokemon.nombre"
+                        style="max-height: 50vh;"
+                        >
+                </td>
+            </tr>
+          </tbody>        
+    </table>
+</div>

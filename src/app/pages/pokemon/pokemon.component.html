@@ -1,0 +1,21 @@
+<div class="container-fluid text-center">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a routerLink="/pokemons" routerLinkActive="active">Pokemons</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">{{pokemon?.nombre}}</li>
+        </ol>
+    </nav>
+
+    <div class="card" style="width: 18rem;">
+        <img [src]="pokemon?.imagen" class="card-img-top" [alt]="pokemon?.nombre">
+        <div class="card-body">
+            <h5 class="card-title">{{pokemon?.nombre}}</h5>
+            <p class="card-text">Peso: {{pokemon?.peso}} kg</p>
+            <a class="btn btn-primary">Más información</a>
+        </div>
+    </div>
+
+</div>
