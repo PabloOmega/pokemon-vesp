@@ -1,0 +1,53 @@
+<div class="container-fluid text-center">
+    <!-- <h2>{{this.pokemonsService.mensaje}}</h2> -->
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="usuario" class="form-label">ID Usuario</label>
+            <input 
+                type="number" 
+                [class]="form.get('userId')?.invalid && form.get('userId')?.touched ? 'form-control is-invalid' : 'form-control'" 
+                id="usuario" 
+                formControlName="userId">
+            <div class="invalid-feedback">
+                El ID Usuario es obligatorio
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="titulo" class="form-label">Título</label>
+            <input 
+                type="text" 
+                [class]="form.get('title')?.invalid && form.get('title')?.touched ? 'form-control is-invalid' : 'form-control'" 
+                id="titulo" 
+                formControlName="title">
+            <div class="invalid-feedback">
+                El título es obligatorio
+            </div>
+        </div>    
+        <div class="mb-3">
+            <label for="cuerpo" class="form-label">Cuerpo</label>
+            <textarea 
+                type="text" 
+                [class]="form.get('body')?.invalid && form.get('body')?.touched ? 'form-control is-invalid' : 'form-control'"  
+                id="cuerpo" 
+                formControlName="body">
+            </textarea>
+            <div class="invalid-feedback">
+                <span *ngIf="form.get('body')?.errors?.['required']">El cuerpo es obligatorio</span>
+                <span *ngIf="form.get('body')?.errors?.['minlength']">Debe ser mayor a 10 caracteres</span>
+            </div>
+        </div>            
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Agregar Post</button>
+        </div>
+    </form>
+
+    <h1>Posts</h1>
+    <div class="list-group">
+        <a *ngFor="let post of posts" class="list-group-item list-group-item-action" aria-current="true">
+            <h5 class="mb-1">{{post.title}}</h5>
+            <p class="mb-1">{{post.body}}</p>
+            <small>{{post.userId}}</small>
+        </a>
+    </div>
+</div>

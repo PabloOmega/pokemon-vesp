@@ -15,6 +15,7 @@ export class NavbarComponent {
   paths: Path[] = [
     { path: '/home', nombre: 'Home' },
     { path: '/pokemons', nombre: 'Pokemons' },
+    { path: '/posts', nombre: 'Posts' },
     { path: '/acercade', nombre: 'Acerca de' }
   ];
 
