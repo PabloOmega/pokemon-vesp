@@ -43,4 +43,19 @@ export class PostsComponent {
       });
     }
   }
+
+  updatePost(post: Post): void {
+    if(this.form.invalid) return;
+    const newPost = {...post, ...this.form.value};
+    this.postsService.updatePost(newPost).subscribe((post) => {
+      const index = this.posts.findIndex(p => p.id === post.id);
+      this.posts[index] = post;
+    })
+  }
+
+  deletePost(post: Post): void {
+    this.postsService.deletePost(post).subscribe(() => {
+      this.posts = this.posts.filter(p => p.id !== post.id);
+    });
+  }
 }

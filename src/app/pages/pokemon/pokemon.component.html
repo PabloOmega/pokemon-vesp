@@ -5,15 +5,15 @@
             <li class="breadcrumb-item">
                 <a routerLink="/pokemons" routerLinkActive="active">Pokemons</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">{{pokemon?.nombre}}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{pokemon?.name}}</li>
         </ol>
     </nav>
 
     <div class="card" style="width: 18rem;">
-        <img [src]="pokemon?.imagen" class="card-img-top" [alt]="pokemon?.nombre">
+        <img [src]="pokemon?.sprites?.front_default" class="card-img-top" [alt]="pokemon?.name">
         <div class="card-body">
-            <h5 class="card-title">{{pokemon?.nombre}}</h5>
-            <p class="card-text">Peso: {{pokemon?.peso}} kg</p>
+            <h5 class="card-title">{{pokemon?.name}}</h5>
+            <p class="card-text">Peso: {{pokemon?.weight}} kg</p>
             <a class="btn btn-primary">Más información</a>
         </div>
     </div>

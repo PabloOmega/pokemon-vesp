@@ -1,35 +1,48 @@
-
 <div class="container-fluid text-center">
     <button type="button" class="btn btn-primary" (click)="onClickButton()">Imprimir Mensaje</button>
+
+    <nav aria-label="..." class="mt-3">
+        <ul class="pagination flex-wrap justify-content-center">
+            <li 
+                [class]="paginaActual === 0 ? 'page-item disabled' : 'page-item'"
+                >
+                <a class="page-link" (click)="getPokemons(paginaActual - 1)" style="cursor: pointer;">Anterior</a>
+            </li>
+            <li 
+                *ngFor="let pagina of paginas" 
+                [class]="paginaActual === pagina - 1 ? 'page-item active' : 'page-item'" 
+                aria-current="page">
+                <a class="page-link" (click)="getPokemons(pagina - 1)" style="cursor: pointer;">{{pagina}}</a>
+            </li>
+            <li 
+                [class]="paginaActual === paginas.length - 1 ? 'page-item disabled' : 'page-item'"
+                >
+                <a class="page-link" (click)="getPokemons(paginaActual + 1)" style="cursor: pointer;">Siguiente</a>
+            </li>
+        </ul>
+    </nav>
+
     <table class="table table-striped-columns table-hover">
         <thead>
             <tr>
                 <th scope="col">id</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Peso</th>
-                <th scope="col">Tipo</th>
+                <th scope="col">Altura</th>
                 <th scope="col">Imagen</th>
             </tr>
-          </thead>
-          <tbody>
-            <tr 
-                *ngFor="let pokemon of pokemons" 
-                style="cursor: pointer;"
-                (click)="onClickPokemon(pokemon)"
-                >
+        </thead>
+        <tbody>
+            <tr *ngFor="let pokemon of pokemons" style="cursor: pointer;" (click)="onClickPokemon(pokemon)">
                 <th scope="row">{{pokemon.id}}</th>
-                <td>{{pokemon.nombre}}</td>
-                <td>{{pokemon.peso}}</td>
-                <td>{{pokemon.tipo}}</td>
+                <td>{{pokemon.name}}</td>
+                <td>{{pokemon.weight}}</td>
+                <td>{{pokemon.height}}</td>
                 <td>
-                    <img 
-                        [src]="pokemon.imagen" 
-                        class="figure-img img-fluid rounded" 
-                        [alt]="pokemon.nombre"
-                        style="max-height: 50vh;"
-                        >
+                    <img [src]="pokemon.sprites.front_default" class="figure-img img-fluid rounded" [alt]="pokemon.name"
+                        style="max-height: 50vh;">
                 </td>
             </tr>
-          </tbody>        
+        </tbody>
     </table>
 </div>
