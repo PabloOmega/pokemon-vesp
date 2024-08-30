@@ -17,6 +17,7 @@ export class NavbarComponent {
     { path: '/home', nombre: 'Home' },
     { path: '/pokemons', nombre: 'Pokemons' },
     { path: '/posts', nombre: 'Posts' },
+    { path: '/todos', nombre: 'Todos' },
     { path: '/acercade', nombre: 'Acerca de' }
   ];
 
